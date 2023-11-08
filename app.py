@@ -23,8 +23,8 @@ def main():
     words_result = db.words.find({}, {'_id': False})
     words = []
     for word in words_result:
-        definition = word['definitions']
-        # definition = definition if type(definition) is str else definition[0]
+        definition = word['definitions'][0]['shortdef']
+        definition = definition if type(definition) is str else definition[0]
         words.append({
             'word': word['word'],
             'definition': definition,
